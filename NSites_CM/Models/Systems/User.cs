@@ -152,11 +152,11 @@ namespace NSites_CM.Models.Systems
 
                 if (_dt.Rows.Count > 0)
                 {
-                    return false;
+                    return true;
                 }
                 else
                 {
-                    return true;
+                    return false;
                 }
             }
             catch

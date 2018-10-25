@@ -39,3 +39,20 @@ D:\PERSONAL FILES\N.SITES\NSites_HRIS_cm\NSites_CM\bin\Newtonsoft.Json.xml
 D:\PERSONAL FILES\N.SITES\NSites_HRIS_cm\NSites_CM\bin\System.Net.Http.Formatting.xml
 D:\PERSONAL FILES\N.SITES\NSites_HRIS_cm\NSites_CM\bin\System.Web.Http.xml
 D:\PERSONAL FILES\N.SITES\NSites_HRIS_cm\NSites_CM\bin\System.Web.Http.WebHost.xml
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\bin\NSites_CM.dll.config
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\bin\NSites_CM.dll
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\bin\NSites_CM.pdb
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\bin\MySql.Data.dll
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\bin\Newtonsoft.Json.dll
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\bin\System.Net.Http.Formatting.dll
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\bin\System.Web.Http.dll
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\bin\System.Web.Http.WebHost.dll
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\bin\Newtonsoft.Json.xml
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\bin\System.Net.Http.Formatting.xml
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\bin\System.Web.Http.xml
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\bin\System.Web.Http.WebHost.xml
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\obj\Debug\NSites_CM.csprojAssemblyReference.cache
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\obj\Debug\NSites_CM.csproj.CoreCompileInputs.cache
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\obj\Debug\NSites_CM.csproj.CopyComplete
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\obj\Debug\NSites_CM.dll
+F:\Applications\NSites\nsites-hris-cm\NSites_CM\obj\Debug\NSites_CM.pdb

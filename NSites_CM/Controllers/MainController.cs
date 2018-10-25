@@ -52,6 +52,7 @@ namespace NSites_CM.Controllers
         TaxType loTaxType = new TaxType();
         IncomeTaxTable loIncomeTaxTable = new IncomeTaxTable();
         WorkSchedule loWorkSchedule = new WorkSchedule();
+        DailyTimeRecord loDailyTimeRecord = new DailyTimeRecord();
         //Payrolls
 
         //Systems
@@ -1001,6 +1002,21 @@ namespace NSites_CM.Controllers
             return loWorkSchedule.removeWorkSchedule(pId, pUserId);
         }
         #endregion ""
+
+        #region "Daily Time Records"
+
+        public DataTable getEmployeeListByType(string pEmploymentType, string pSearchString, string pDepartmentCode)
+        {
+            return loDailyTimeRecord.getEmployeeListByType(pEmploymentType, pSearchString, pDepartmentCode);
+        }
+
+        public DataTable getDailyTimeRecordDates(string pEmployeeNo, DateTime pFromDate, DateTime pToDate)
+        {
+            return loDailyTimeRecord.getDailyTimeRecordDates(pEmployeeNo, pFromDate, pToDate);
+        }
+
+        #endregion
+
         #endregion
 
         #region "PAYROLLS"
