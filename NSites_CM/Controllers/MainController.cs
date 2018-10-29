@@ -724,6 +724,12 @@ namespace NSites_CM.Controllers
             return loEmployee.getEmployeeNames();
         }
 
+        [HttpGet]
+        public DataTable getEmployeeListByType(string pEmploymentTypeId, string pSearchString, string pDepartmentId)
+        {
+            return loDailyTimeRecord.getEmployeeListByType(pEmploymentTypeId, pSearchString, pDepartmentId);
+        }
+
         [HttpPost]
         public string insertEmployee([FromBody]Employee pEmployee)
         {
@@ -1005,14 +1011,74 @@ namespace NSites_CM.Controllers
 
         #region "Daily Time Records"
 
-        public DataTable getEmployeeListByType(string pEmploymentType, string pSearchString, string pDepartmentCode)
-        {
-            return loDailyTimeRecord.getEmployeeListByType(pEmploymentType, pSearchString, pDepartmentCode);
-        }
-
         public DataTable getDailyTimeRecordDates(string pEmployeeNo, DateTime pFromDate, DateTime pToDate)
         {
             return loDailyTimeRecord.getDailyTimeRecordDates(pEmployeeNo, pFromDate, pToDate);
+        }
+
+        public DataTable getDailyTimeRecordByDate(string pEmployeeNo, DateTime pFromDate, DateTime pToDate)
+        {
+            return loDailyTimeRecord.getDailyTimeRecordByDate(pEmployeeNo, pFromDate, pToDate);
+        }
+
+        [HttpGet]
+        public bool insertTimeIn(string pDailyTimeRecordId, string pTimeIn, string pUsername, string pHostname)
+        {
+            return loDailyTimeRecord.insertTimeIn(pDailyTimeRecordId, pTimeIn, pUsername, pHostname);
+        }
+
+        [HttpGet]
+        public bool insertBreakOut(string pDailyTimeRecordId, string pBreakOut, string pUsername, string pHostname)
+        {
+            return loDailyTimeRecord.insertBreakOut(pDailyTimeRecordId, pBreakOut, pUsername, pHostname);
+        }
+
+        [HttpGet]
+        public bool insertBreakIn(string pDailyTimeRecordId, string pBreakIn, string pUsername, string pHostname)
+        {
+            return loDailyTimeRecord.insertBreakIn(pDailyTimeRecordId, pBreakIn, pUsername, pHostname);
+        }
+
+        [HttpGet]
+        public bool insertTimeOut(string pDailyTimeRecordId, string pTimeOut, string pUsername, string pHostname)
+        {
+            return loDailyTimeRecord.insertTimeOut(pDailyTimeRecordId, pTimeOut, pUsername, pHostname);
+        }
+        
+        [HttpGet]
+        public bool insertLate1(string pDailyTimeRecordId, string pLate1, string pUsername, string pHostname)
+        {
+            return loDailyTimeRecord.insertLate1(pDailyTimeRecordId, pLate1, pUsername, pHostname);
+        }
+
+        [HttpGet]
+        public bool insertLate2(string pDailyTimeRecordId, string pLate2, string pUsername, string pHostname)
+        {
+            return loDailyTimeRecord.insertLate2(pDailyTimeRecordId, pLate2, pUsername, pHostname);
+        }
+
+        [HttpGet]
+        public bool insertUndertime1(string pDailyTimeRecordId, string pUndertime1, string pUsername, string pHostname)
+        {
+            return loDailyTimeRecord.insertUndertime1(pDailyTimeRecordId, pUndertime1, pUsername, pHostname);
+        }
+
+        [HttpGet]
+        public bool insertUndertime2(string pDailyTimeRecordId, string pUndertime2, string pUsername, string pHostname)
+        {
+            return loDailyTimeRecord.insertUndertime2(pDailyTimeRecordId, pUndertime2, pUsername, pHostname);
+        }
+
+        [HttpPost]
+        public bool updateDailyTimeRecord([FromBody]DailyTimeRecord pDailyTimeRecord)
+        {
+            return loDailyTimeRecord.updateDailyTimeRecord(pDailyTimeRecord);
+        }
+
+        [HttpGet]
+        public DataTable updateDTRShiftSchedule(string pEmployeeNo, DateTime pFromDate, DateTime pToDate, string pShiftSchedule)
+        {
+            return loDailyTimeRecord.updateDTRShiftSchedule(pEmployeeNo, pFromDate, pToDate, pShiftSchedule);
         }
 
         #endregion
