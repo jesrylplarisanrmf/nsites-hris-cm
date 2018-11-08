@@ -34,6 +34,21 @@ namespace NSites_CM.Models.HRISs
             }
         }
 
+        public DataTable getHolidayType(string pHolidayCode)
+        {
+            DataTable _dt = new DataTable();
+
+            using (MySqlConnection _conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString))
+            {
+                _conn.Open();
+                MySqlDataAdapter _da = new MySqlDataAdapter("call spGetHolidayType('" + pHolidayCode + "')", _conn);
+                _da.Fill(_dt);
+                _conn.Close();
+
+                return _dt;
+            }
+        }
+
         public string insertHoliday(Holiday pHoliday)
         {
             string _Id = "";

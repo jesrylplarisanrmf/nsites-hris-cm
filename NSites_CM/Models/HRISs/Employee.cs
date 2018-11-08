@@ -18,14 +18,22 @@ namespace NSites_CM.Models.HRISs
         public string Firstname { get; set; }
         public string Middlename { get; set; }
         public string Active { get; set; }
+        public DateTime DateHired { get; private set; }
+        public DateTime DateProbationary { get; private set; }
+        public DateTime DateRegular { get; private set; }
+        public DateTime DateEnd { get; private set; }
         public string BiometricsIdNo { get; set; }
         public string EmploymentTypeId { get; set; }
         public string DesignationId { get; set; }
         public string DepartmentId { get; set; }
         public string NoWorkSchedule { get; set; }
         public string WorkScheduleId { get; set; }
+        public string Gender { get; private set; }
         public DateTime Birthday { get; set; }
+        public string MaritalStatus { get; private set; }
+        public string Address { get; private set; }
         public string EmailAddress { get; set; }
+        public string ContactNo { get; private set; }
         public string TIN { get; set; }
         public string TINDeducted { get; set; }
         public string PhilHealthId { get; set; }
@@ -52,6 +60,21 @@ namespace NSites_CM.Models.HRISs
             {
                 _conn.Open();
                 MySqlDataAdapter _da = new MySqlDataAdapter("call spGetEmployees('" + pDisplayType + "','" + pPrimaryKey + "','" + pSearchString + "')", _conn);
+                _da.Fill(_dt);
+                _conn.Close();
+
+                return _dt;
+            }
+        }
+
+        public DataTable getAllActiveEmployees()
+        {
+            DataTable _dt = new DataTable();
+
+            using (MySqlConnection _conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString))
+            {
+                _conn.Open();
+                MySqlDataAdapter _da = new MySqlDataAdapter("call spGetAllActiveEmployees", _conn);
                 _da.Fill(_dt);
                 _conn.Close();
 
@@ -86,14 +109,22 @@ namespace NSites_CM.Models.HRISs
                     "','" + pEmployee.Firstname +
                     "','" + pEmployee.Middlename +
                     "','" + pEmployee.Active +
+                    "','" + pEmployee.DateHired +
+                    "','" + pEmployee.DateProbationary +
+                    "','" + pEmployee.DateRegular +
+                    "','" + pEmployee.DateEnd +
                     "','" + pEmployee.BiometricsIdNo +
                     "','" + pEmployee.EmploymentTypeId +
                     "','" + pEmployee.DesignationId +
                     "','" + pEmployee.DepartmentId +
                     "','" + pEmployee.NoWorkSchedule +
                     "','" + pEmployee.WorkScheduleId +
+                    "','" + pEmployee.Gender +
                     "','" + String.Format("{0:yyyy-MM-dd}", pEmployee.Birthday) +
+                    "','" + pEmployee.MaritalStatus +
+                    "','" + pEmployee.Address +
                     "','" + pEmployee.EmailAddress +
+                    "','" + pEmployee.ContactNo +
                     "','" + pEmployee.TIN +
                     "','" + pEmployee.TINDeducted +
                     "','" + pEmployee.PhilHealthId +
@@ -139,14 +170,22 @@ namespace NSites_CM.Models.HRISs
                     "','" + pEmployee.Firstname +
                     "','" + pEmployee.Middlename +
                     "','" + pEmployee.Active +
+                    "','" + pEmployee.DateHired +
+                    "','" + pEmployee.DateProbationary +
+                    "','" + pEmployee.DateRegular +
+                    "','" + pEmployee.DateEnd +
                     "','" + pEmployee.BiometricsIdNo +
                     "','" + pEmployee.EmploymentTypeId +
                     "','" + pEmployee.DesignationId +
                     "','" + pEmployee.DepartmentId +
                     "','" + pEmployee.NoWorkSchedule +
                     "','" + pEmployee.WorkScheduleId +
+                    "','" + pEmployee.Gender +
                     "','" + String.Format("{0:yyyy-MM-dd}", pEmployee.Birthday) +
+                    "','" + pEmployee.MaritalStatus +
+                    "','" + pEmployee.Address +
                     "','" + pEmployee.EmailAddress +
+                    "','" + pEmployee.ContactNo +
                     "','" + pEmployee.TIN +
                     "','" + pEmployee.TINDeducted +
                     "','" + pEmployee.PhilHealthId +

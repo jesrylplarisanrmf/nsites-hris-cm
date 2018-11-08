@@ -53,6 +53,10 @@ namespace NSites_CM.Controllers
         IncomeTaxTable loIncomeTaxTable = new IncomeTaxTable();
         WorkSchedule loWorkSchedule = new WorkSchedule();
         DailyTimeRecord loDailyTimeRecord = new DailyTimeRecord();
+        COAEntry loCOAEntry = new COAEntry();
+        LeaveEntry loLeaveEntry = new LeaveEntry();
+        OvertimeEntry loOvertimeEntry = new OvertimeEntry();
+        HolidayEntry loHolidayEntry = new HolidayEntry();
         //Payrolls
 
         //Systems
@@ -711,11 +715,18 @@ namespace NSites_CM.Controllers
         #endregion
 
         #region "HRISS"
+
         #region "Employee"
         [HttpGet]
         public DataTable getEmployees(string pDisplayType, string pPrimaryKey, string pSearchString)
         {
             return loEmployee.getEmployees(pDisplayType, pPrimaryKey, pSearchString);
+        }
+
+        [HttpGet]
+        public DataTable getAllActiveEmployees()
+        {
+            return loEmployee.getAllActiveEmployees();
         }
 
         [HttpGet]
@@ -858,6 +869,12 @@ namespace NSites_CM.Controllers
         public DataTable getHolidays(string pDisplayType, string pPrimaryKey, string pSearchString)
         {
             return loHoliday.getHolidays(pDisplayType, pPrimaryKey, pSearchString);
+        }
+
+        [HttpGet]
+        public DataTable getHolidayType(string pHolidayCode)
+        {
+            return loHoliday.getHolidayType(pHolidayCode);
         }
 
         [HttpPost]
@@ -1081,6 +1098,215 @@ namespace NSites_CM.Controllers
             return loDailyTimeRecord.updateDTRShiftSchedule(pEmployeeNo, pFromDate, pToDate, pShiftSchedule);
         }
 
+        #endregion
+
+        #region "COA Entry"
+        [HttpGet]
+        public DataTable getCOAEntries(string pEmploymentTypeId, DateTime pFromDate, DateTime pToDate, string pSearchString, string pDepartmentId)
+        {
+            return loCOAEntry.getCOAEntries(pEmploymentTypeId, pFromDate, pToDate, pSearchString, pDepartmentId);
+        }
+
+        [HttpGet]
+        public DataTable getCOAEntryStatus(string pCOAEntryId)
+        {
+            return loCOAEntry.getCOAEntryStatus(pCOAEntryId);
+        }
+
+        [HttpGet]
+        public DataTable getCOAEntry(string pCOAEntryId)
+        {
+            return loCOAEntry.getCOAEntry(pCOAEntryId);
+        }
+
+        [HttpPost]
+        public bool insertCOAEntry([FromBody] COAEntry pCOAEntry, string pUserId)
+        {
+            return loCOAEntry.insertCOAEntry(pCOAEntry, pUserId);
+        }
+
+        [HttpPost]
+        public bool updateCOAEntry([FromBody] COAEntry pCOAEntry, string pUserId)
+        {
+            return loCOAEntry.updateCOAEntry(pCOAEntry, pUserId);
+        }
+
+        [HttpGet]
+        public bool removeCOAEntry(string pCOAEntryId, string pUserId)
+        {
+            return loCOAEntry.removeCOAEntry(pCOAEntryId, pUserId);
+        }
+
+        [HttpGet]
+        public bool approveCOAEntry(string pCOAEntryId, string pUserId)
+        {
+            return loCOAEntry.approveCOAEntry(pCOAEntryId, pUserId);
+        }
+
+        [HttpGet]
+        public bool cancelCOAEntry(string pCOAEntryId, string pCancelReason, string pUserId)
+        {
+            return loCOAEntry.cancelCOAEntry(pCOAEntryId, pCancelReason, pUserId);
+        }
+
+        #endregion
+
+        #region "Leave Entry"
+        [HttpGet]
+        public DataTable getLeaveEntries(string pEmploymentTypeId, DateTime pFromDate, DateTime pToDate, string pSearchString, string pDepartmentId)
+        {
+            return loLeaveEntry.getLeaveEntries(pEmploymentTypeId, pFromDate, pToDate, pSearchString, pDepartmentId);
+        }
+
+        [HttpGet]
+        public DataTable getLeaveEntry(string pLeaveEntryId)
+        {
+            return loLeaveEntry.getLeaveEntry(pLeaveEntryId);
+        }
+
+        [HttpGet]
+        public DataTable getLeaveEntryStatus(string pLeaveEntryId)
+        {
+            return loLeaveEntry.getLeaveEntryStatus(pLeaveEntryId);
+        }
+
+        [HttpPost]
+        public bool insertLeaveEntry([FromBody] LeaveEntry loLeaveEntry, string pUserId)
+        {
+            return loLeaveEntry.insertLeaveEntry(loLeaveEntry, pUserId);
+        }
+
+        [HttpPost]
+        public bool updateLeaveEntry([FromBody] LeaveEntry loLeaveEntry, string pUserId)
+        {
+            return loLeaveEntry.updateLeaveEntry(loLeaveEntry, pUserId);
+        }
+
+        [HttpGet]
+        public bool approveLeaveEntry(string pLeaveEntryId, string pUserId)
+        {
+            return loLeaveEntry.approveLeaveEntry(pLeaveEntryId, pUserId);
+        }
+
+        [HttpGet]
+        public bool approveLeaveEntryByDate(string pLeaveEntryId, DateTime pDate, string pUserId)
+        {
+            return loLeaveEntry.approveLeaveEntryByDate(pLeaveEntryId, pDate, pUserId);
+        }
+
+        [HttpGet]
+        public bool cancelLeaveEntry(string pLeaveEntryId, string pCancelReason, string pUserId)
+        {
+            return loLeaveEntry.cancelLeaveEntry(pLeaveEntryId, pCancelReason, pUserId);
+        }
+
+        [HttpGet]
+        public bool removeLeaveEntry(string pLeaveEntryId, string pUserId)
+        {
+            return loLeaveEntry.removeLeaveEntry(pLeaveEntryId, pUserId);
+        }
+
+        #endregion
+
+        #region "Overtime Entry"
+        [HttpGet]
+        public DataTable getOvertimeEntryEmployeeList(string pEmploymentTypeId, DateTime pFromDate, DateTime pToDate,
+                                    string pSearchString, string pDepartmentId)
+        {
+            return loOvertimeEntry.getOvertimeEntryEmployeeList(pEmploymentTypeId, pFromDate, pToDate, pSearchString, pDepartmentId);
+        }
+
+        [HttpGet]
+        public DataTable getOvertimeEntries(string pEmploymentNo, DateTime pFromDate, DateTime pToDate)
+        {
+            return loOvertimeEntry.getOvertimeEntries(pEmploymentNo, pFromDate, pToDate);
+        }
+
+        [HttpGet]
+        public DataTable getOvertimeEntryStatus(string pOvertimeEntryId)
+        {
+            return loOvertimeEntry.getOvertimeEntryStatus(pOvertimeEntryId);
+        }
+
+        [HttpGet]
+        public DataTable getOvertimeEntry(string pOvertimeEntryId)
+        {
+            return loOvertimeEntry.getOvertimeEntry(pOvertimeEntryId);
+        }
+
+        [HttpPost]
+        public bool insertOvertimeEntry([FromBody]OvertimeEntry pOvertimeEntry, string pUserId)
+        {
+            return loOvertimeEntry.insertOvertimeEntry(pOvertimeEntry, pUserId);
+        }
+
+        [HttpGet]
+        public bool approveOvertimeEntry(string pOvertimeEntryId, string pUserId)
+        {
+            return loOvertimeEntry.approveOvertimeEntry(pOvertimeEntryId, pUserId);
+        }
+
+        [HttpGet]
+        public bool cancelOvertimeEntry(string pOvertimeEntryId, string pCancelReason, string pUserId)
+        {
+            return loOvertimeEntry.cancelOvertimeEntry(pOvertimeEntryId, pCancelReason, pUserId);
+        }
+
+        [HttpGet]
+        public bool removeOvertimeEntry(string pOvertimeEntryId, string pUserId)
+        {
+            return loOvertimeEntry.removeOvertimeEntry(pOvertimeEntryId, pUserId);
+        }
+        #endregion
+
+        #region "Holiday Entry"
+        [HttpGet]
+        public DataTable getHolidayEntries()
+        {
+            return loHolidayEntry.getHolidayEntries();
+        }
+
+        [HttpGet]
+        public DataTable getHolidayEntry(string pHolidayEntryId)
+        {
+            return loHolidayEntry.getHolidayEntry(pHolidayEntryId);
+        }
+
+        [HttpGet]
+        public DataTable getHolidayEntryStatus(string pHolidayEntryId)
+        {
+            return loHolidayEntry.getHolidayEntryStatus(pHolidayEntryId);
+        }
+
+        [HttpPost]
+        public bool insertHolidayEntry([FromBody]HolidayEntry pHolidayEntry, string pUserId)
+        {
+            return loHolidayEntry.insertHolidayEntry(pHolidayEntry, pUserId);
+        }
+
+        [HttpPost]
+        public bool updateHolidayEntry([FromBody]HolidayEntry pHolidayEntry, string pUserId)
+        {
+            return loHolidayEntry.updateHolidayEntry(pHolidayEntry, pUserId);
+        }
+
+        [HttpGet]
+        public bool approveHolidayEntry(string pHolidayEntryId, string pUserId)
+        {
+            return loHolidayEntry.approveHolidayEntry(pHolidayEntryId, pUserId);
+        }
+
+        [HttpGet]
+        public bool cancelHolidayEntry(string pHolidayEntryId, string pCancelReason, string pUserId)
+        {
+            return loHolidayEntry.cancelHolidayEntry(pHolidayEntryId, pCancelReason, pUserId);
+        }
+
+        [HttpGet]
+        public bool removeHolidayEntry(string pHolidayEntryId, string pUserId)
+        {
+            return loHolidayEntry.removeHolidayEntry(pHolidayEntryId, pUserId);
+        }
         #endregion
 
         #endregion
